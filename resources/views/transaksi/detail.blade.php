@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-  <h1 > Bayar : <span style="color: red"> Rp {{ number_format($harga, '0', '.', '.')  }}</span> </h1>
+  <p style="font-size: 1.9rem;">Bayar : <span style="color: red"> Rp {{ number_format($harga, '0', '.', '.')  }}</span><p>
 @endsection
 
 @section('body')

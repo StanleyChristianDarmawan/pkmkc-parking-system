@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Transaksi Keluar
+  <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Transaksi Keluar<p>
 @endsection
 
 @section('body')
@@ -20,7 +20,7 @@
           <div class="input-group">
             <input type="text" class="form-control" name="kode_parkir" placeholder="Kode Parkir" autofocus>
             <span class="input-group-append">
-              <button type="submit" name="submit" class="btn btn-info btn-flat"><i class="fas fa-plus"></i></button>
+              <button type="submit" name="submit" class="btn btn-success btn-flat"><i class="fas fa-plus"></i></button>
             </span>
           </div>
         </div>
@@ -57,12 +57,17 @@
               <td>{{ $parkir->created_at->format('d-M-Y') }}</td>
               <td>{{ $parkir->created_at->format('H:i:s') }}</td>
               <td>
-                  <div class="btn-group">
-                    <a href="/keluar-parkir/{{ $parkir->kode_parkir }}" class="btn btn-info btn-xs rounded-0">Proses</a>
-                    @can('admin')
-                    <a href="/keluar-parkir/{{ $parkir->kode_parkir }}/hapus" onclick="confirm('Yakin ingin menghapus?')" class="btn rounded-0 btn-danger btn-xs">Hapus</a>
-                    @endcan
-                  </div>
+                <div class="btn-group">
+                  <a href="/keluar-parkir/{{ $parkir->kode_parkir }}" class="btn btn-success btn-sm rounded" style="font-weight: 600; padding: 5px 15px; margin-right: 5px;">
+                    <i class="fas fa-cogs"></i> Proses
+                  </a>
+                  @can('admin')
+                  <a href="/keluar-parkir/{{ $parkir->kode_parkir }}/hapus" onclick="return confirm('Yakin ingin menghapus?')" class="btn btn-danger btn-sm rounded" style="font-weight: 600; padding: 5px 15px;">
+                    <i class="fas fa-trash-alt"></i> Hapus
+                  </a>
+                  @endcan
+                </div>
+              </td>
             </tr>
             @endforeach
           </tbody>

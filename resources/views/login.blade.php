@@ -13,11 +13,45 @@
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <style>
+    .bottom-image {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      width: 50%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    .top-right-image {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: -1;
+      width: 50%;
+      max-width: 180px;
+      height: auto;
+    }
+
+    @media (max-width: 576px) {
+      .bottom-image {
+        width: 80%;
+      }
+      .top-right-image {
+        width: 60%;
+      }
+    }
+  </style>
+
+
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-color: white">
+<img src="{{ asset('images/login/bg1.svg') }}" class="nav-icon top-right-image">
 <div class="login-box">
   <div class="login-logo">
-    <a href="/"><b>Parkir </b>Online</a>
+    <a href="/"><b>Sign </b>In</a>
   </div>
   @if(session()->has('loginError'))
   <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -29,7 +63,7 @@
   @endif
   <!-- /.login-logo -->
   <div class="card">
-    <div class="card-body login-card-body">
+    <div class="card-body login-card-body rounded border">
       {{-- <p class="text-center">-  -</p> --}}
       <form action="/login" method="post">
         @csrf
@@ -57,8 +91,8 @@
         </div>
         <div class="row">
           <!-- /.col -->
-          <div class="col-12 mt-3">
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <div class="col-12 mt-3 text-center">
+            <button type="submit" class="btn btn-white border px-4">Login</button>
           </div>
           <!-- /.col -->
         </div>
@@ -67,6 +101,7 @@
     <!-- /.login-card-body -->
   </div>
 </div>
+<img src="{{ asset('images/login/bg2.svg') }}" class="nav-icon bottom-image">
 <!-- /.login-box -->
 
 <!-- jQuery -->

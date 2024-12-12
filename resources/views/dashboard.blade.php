@@ -4,7 +4,7 @@
     Dashboard
 @endsection
 @section('title')
-  Selamat Datang, {{ auth()->user()->nama }}
+  <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Selamat Datang, {{ auth()->user()->nama }}<p>
 @endsection
 
 @section('body')
@@ -14,18 +14,32 @@
         <div class="row">
           <div class="col-12 col-sm-8 col-md-4">
             <div class="info-box">
-              <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-car-alt"></i></i></span>
+              <span class="info-box-icon"><img src="{{ asset('images/dashboard/kendaraan.svg') }}" class="nav-icon" alt="Dashboard" style="width: 100%; height: 100%;"></span>
               <div class="info-box-content">
-                  <span class="info-box-text">Kendaraan Masuk</span>
-
-                <span class="info-box-number">
-                  {{ $masuk }} 
-                </span>
+                  <span class="info-box-number text-primary" style="font-size: 1.2rem">
+                    {{ $masuk }} 
+                  </span>
+                  <span class="info-box-text text-muted">Kendaraan Masuk</span>
               </div>
               <!-- /.info-box-content -->
             </div>
             <!-- /.info-box -->
           </div>
+
+          <div class="col-12 col-sm-8 col-md-4">
+              <div class="info-box mb-3">
+              <span class="info-box-icon"><img src="{{ asset('images/dashboard/kendaraan.svg') }}" class="nav-icon" alt="Dashboard" style="width: 100%; height: 100%;"></span>
+                
+                <div class="info-box-content">
+                  <span class="info-box-number text-primary" style="font-size: 1.2rem">
+                    10
+                  </span>
+                  <span class="info-box-text text-muted">Lahan Parkir Tersedia</span>
+                </div>
+                <!-- /.info-box-content -->
+              </div>
+              <!-- /.info-box -->
+            </div>
             <!-- /.col -->
             <!-- /.col -->
   
@@ -34,11 +48,13 @@
             <!-- /.col -->
             <div class="col-12 col-sm-8 col-md-4">
               <div class="info-box mb-3">
-                <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check-square"></i></span>
+                <span class="info-box-icon"><img src="{{ asset('images/dashboard/check.svg') }}" class="nav-icon" alt="Dashboard" style="width: 100%; height: 100%;"></span>
   
                 <div class="info-box-content">
-                  <span class="info-box-text">Kendaraan Keluar</span>
-                  <span class="info-box-number">{{ $keluar }}</span>
+                  <span class="info-box-number text-primary" style="font-size: 1.2rem">
+                    {{ $keluar }}
+                  </span>
+                  <span class="info-box-text text-muted">Kendaraan Keluar</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -48,11 +64,13 @@
             @can('admin')
             <div class="col-12 col-sm-8 col-md-4">
               <div class="info-box mb-3">
-                <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user"></i></span>
+                <span class="info-box-icon"><img src="{{ asset('images/dashboard/petugas.svg') }}" class="nav-icon" alt="Dashboard" style="width: 100%; height: 100%;"></span>
                 
                 <div class="info-box-content">
-                  <span class="info-box-text">Jumlah Petugas</span>
-                  <span class="info-box-number">{{ $petugas }}</span>
+                  <span class="info-box-number text-primary" style="font-size: 1.2rem">
+                    {{ $petugas }}
+                  </span>
+                  <span class="info-box-text text-muted">Jumlah Petugas</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -61,11 +79,13 @@
 
             <div class="col-12 col-sm-8 col-md-4">
               <div class="info-box mb-3">
-                <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-coins"></i></span>
+              <span class="info-box-icon"><img src="{{ asset('images/dashboard/pemasukanHari.svg') }}" class="nav-icon" alt="Dashboard" style="width: 100%; height: 100%;"></span>
                 
                 <div class="info-box-content">
-                  <span class="info-box-text">Pemasukan Perhari</span>
-                  <span class="info-box-number">Rp {{ $perhari }}</span>
+                  <span class="info-box-number text-primary" style="font-size: 1.2rem">
+                    Rp {{ $perhari }}
+                  </span>
+                  <span class="info-box-text text-muted">Pemasukan Perhari</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -74,11 +94,13 @@
             
             <div class="col-12 col-sm-8 col-md-4">
               <div class="info-box mb-3">
-                <span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-money-bill"></i></span>
+              <span class="info-box-icon"><img src="{{ asset('images/dashboard/pemasukanBulan.svg') }}" class="nav-icon" alt="Dashboard" style="width: 100%; height: 100%;"></span>
                 
                 <div class="info-box-content">
-                  <span class="info-box-text">Pemasukan Perbulan</span>
-                  <span class="info-box-number">Rp {{ $perbulan }}</span>
+                  <span class="info-box-number text-primary" style="font-size: 1.2rem">
+                    Rp {{ $perbulan }}
+                  </span>
+                  <span class="info-box-text text-muted">Pemasukan Perbulan</span>
                 </div>
                 <!-- /.info-box-content -->
               </div>
@@ -92,7 +114,7 @@
           @can('admin')
           <div class="card card-dark">
             <div class="card-header">
-              <h3 class="card-title">Jumlah Kendaraan Pertahun ({{ now()->year }})</h3>
+              <h3 class="card-title">Jumlah Kendaraan Pertahun {{ now()->year }}</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -112,7 +134,7 @@
           </div>
           <div class="card card-dark">
             <div class="card-header">
-              <h3 class="card-title">Jumlah Pendapatan Pertahun ({{ now()->year }})</h3>
+              <h3 class="card-title">Jumlah Pendapatan Pertahun {{ now()->year }}</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">

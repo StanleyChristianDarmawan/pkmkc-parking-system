@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Riwayat Transaksi
+  <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Riwayat Transaksi<p>
 @endsection
 
 @section('body')
@@ -46,7 +46,9 @@
 
               <td>
                 <div class="btn-group">
-                  <a href="/riwayat-detail/{{ $history->id }}" class="btn btn-info btn-xs rounded-0">Detail</a>
+                  <a href="/riwayat-detail/{{ $history->id }}" class="btn btn-success btn-sm rounded" style="font-weight: 600; padding: 5px 15px;">
+                    <i class="fas fa-info-circle"></i> Detail
+                  </a>
                 </div>
               </td>
             </tr>

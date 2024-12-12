@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-  Tambah Petugas
+  <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Tambah Petugas<p>
 @endsection
 
 @section('body')

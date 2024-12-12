@@ -7,12 +7,23 @@
       </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item d-none d-sm-inline-block justify-content-end">
-        {{-- @can('sekretaris') --}}
-        <a href="/logout" onclick="return confirm('Yakin ingin logout?')" class="nav-link">Logout</a>
-        {{-- @endcan --}}
-      </li>
-    </ul>
+    <li class="nav-item d-flex align-items-center">
+      <img src="{{ asset('images/photo_profile.png') }}" class="card-img-top img-cover" alt="Photo Profile" style="width: 50px; height: 50px; border-radius: 50%;">
+      <div class="ml-3 mr-5">
+        <div class="font-weight-bold" style="font-size: 1.1rem;">{{ auth()->user()->nama }}</div>
+        <div class="text-primary" style="font-size: 0.85rem; font-weight: 700;">
+          @if(auth()->user()->level == 1)
+            Admin
+          @elseif(auth()->user()->level == 0)
+            Petugas
+          @else
+            Unknown
+          @endif
+        </div>
+      </div>
+    </li>
+  </ul>
+
   </nav>
 
   <!-- /.navbar -->

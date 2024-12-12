@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-  Ubah Tarif Kendaraan
+  <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Ubah Tarif Kendaraan<p>
 @endsection
 
 @section('body')

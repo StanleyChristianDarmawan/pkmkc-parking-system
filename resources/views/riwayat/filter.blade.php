@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Filter Transaksi
+    <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Filter Transaksi<p>
 @endsection
 
 @section('body')

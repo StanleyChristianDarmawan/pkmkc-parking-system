@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-  Ubah Data Petugas
+  <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Ubah Data Petugas<p>
 @endsection
 
 @section('body')

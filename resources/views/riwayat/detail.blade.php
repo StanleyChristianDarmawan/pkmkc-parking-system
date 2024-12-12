@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Riwayat Transaksi
+    <p class="text-primary" style="font-size: 1.9rem; font-weight: 700;">Riwayat Transaksi<p>
 @endsection
 
 @section('body')
@@ -13,12 +13,11 @@
 <div class="container-fluid">
 
   <div class="card mx-2">
-
-
-
     <!-- /.card-header -->
     <div class="card-body p-3">
-        <a href="/riwayat-parkir" class="btn-btn-flat rounded-0 btn-secondary btn-sm"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
+    <a href="/riwayat-parkir" class="btn btn-secondary btn-sm align-items-center justify-content-center mb-3 rounded">
+      <i class="fa-solid fa-arrow-left mr-2"></i> Kembali
+    </a>
         <hr>
         <table id="example2" class="table table-sm table-borderless">
           <tbody>
