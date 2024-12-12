@@ -26,9 +26,10 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
 // tombol masuk & struk // 
-Route::get('/', [ParkirController::class, 'index']);
+Route::get('/', [ParkirController::class, 'index'])->name('masuk');
 Route::get('/masuk/{jenis}', [ParkirController::class, 'create']);
 Route::get('/struk/{kode_parkir}', [ParkirController::class, 'struk']);
+
 
 //middleware admin //
 Route::middleware([Status::class])->group(function(){
@@ -40,6 +41,7 @@ Route::middleware([Status::class])->group(function(){
     //kelola tarif
     Route::resource('/tarif', TarifController::class)->except('destroy');
     Route::get('/tarif/{id}/hapus', [TarifController::class, 'destroy']);
+
 });
 
 // middleware auth //

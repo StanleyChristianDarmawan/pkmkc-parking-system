@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+
 use App\Models\Parkir;
 use App\Models\Tarif;
-use App\Models\User;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
 class ParkirController extends Controller
@@ -24,7 +27,6 @@ class ParkirController extends Controller
         $id_jenis = Tarif::where('jenis_kendaraan', $request->jenis)->value('id');
         $jenis_kendaraan = $request->jenis;
         $latest = Parkir::latest()->first() ?? new Parkir();
-        // $kode_parkir = $id_jenis . " " . Carbon::now()->format('ymd His') . " " . ($latest->id + 1);
        
         $kode_parkir = 'P' . $id_jenis . '-' . tambah_nol_didepan(($latest->id + 1), 6);
 
@@ -43,10 +45,32 @@ class ParkirController extends Controller
         
     }
 
+
+
+    public function checkPrinter($device)
+    {
+        try {
+            $connector = new WindowsPrintConnector($device);
+            $printer = new Printer($connector);
+
+            $printer->close(); 
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
+
     public function struk($kode_parkir)
     {
-        $print = Parkir::where('kode_parkir', $kode_parkir)->get();
-        return view('struk', compact('print'));
+      
+        $prints = Parkir::where('kode_parkir', $kode_parkir)->get();
+
+        if($this->checkPrinter("TM-T82")){
+            return view('struk_masuk.struk', compact('print'));
+        }
+        else{
+            return view('struk_masuk.struk_digital', compact('prints'));
+        }
     }
 
     // -- end halaman user
@@ -124,8 +148,20 @@ class ParkirController extends Controller
 
     public function keluar($kode_parkir)
     {
-        $print = Parkir::where('kode_parkir', $kode_parkir)->get();
-        return view('struk_keluar.', compact('print'));
+
+        $prints = Parkir::where('kode_parkir', $kode_parkir)->get();
+
+        // cek apakah terhubung ke TM-T82
+        if($this->checkPrinter("TM-T82")){
+            return view('struk_keluar.struk', compact('prints'));
+        }
+        else{
+            return view('struk_keluar.struk_digital', compact('prints'));
+        }
+        
+        
     }
+
+
 
 }
